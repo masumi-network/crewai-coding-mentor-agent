@@ -24,7 +24,12 @@ class Codingmentorcrew():
 			verbose=True
 		)
 
-
+	@agent
+	def transcriber(self) -> Agent:
+		return Agent(
+			config=self.agents_config['transcriber'],
+			verbose=True
+		)
 	# To learn more about structured task outputs, 
 	# task dependencies, and task callbacks, check out the documentation:
 	# https://docs.crewai.com/concepts/tasks#overview-of-a-task
@@ -33,16 +38,39 @@ class Codingmentorcrew():
 		return Task(
 			config=self.tasks_config['mentorship_task'],
 		)
+
+	@task
+	def transcribe_task(self) -> Task:
+		return Task(
+			config=self.tasks_config['transcribe_task'],
+		)
+	
+	def route_input(self, input_text) -> Agent:
+		# Simple routing based on input
+		if '1' in input_text:  
+			print('routing to mentor')
+			return [self.mentor(),self.mentorship_task()]
+		else:# Otherwise, route to the text generation agent
+			print('routing to other')
+			return [self.transcriber(),self.transcribe_task()]
+
 	@crew
 	def crew(self) -> Crew:
 		"""Creates the Codingmentorcrew crew"""
 		# To learn how to add knowledge sources to your crew, check out the documentation:
 		# https://docs.crewai.com/concepts/knowledge#what-is-knowledge
+		input_text = str(input("Enter your input: ")) 
+		
+		process = self.route_input(input_text)
+		selected_agent = process[0]
+		selected_task = process[1]
 
 		return Crew(
-			agents=self.agents, # Automatically created by the @agent decorator
-			tasks=self.tasks, # Automatically created by the @task decorator
+			agents= [selected_agent], # Automatically created by the @agent decorator
+			tasks= [selected_task], # Automatically created by the @task decorator
 			process=Process.sequential,
 			verbose=True,
 			# process=Process.hierarchical, # In case you wanna use that instead https://docs.crewai.com/how-to/Hierarchical/
 		)
+
+

@@ -1,6 +1,6 @@
 mentorship_task:
   description: >
-    Conduct a thorough research about {topic}
+    Conduct a thorough research about {topic} regarding programming
     Make sure you find any interesting and relevant information given
     the current year is {current_year}.
     Returning video and website resources in order to answer the question regarding {topic}.
@@ -10,4 +10,15 @@ mentorship_task:
     and the other five being useful videos regarding {topic}.
   agent: mentor
 
+
+transcribe_task:
+  description: >
+    View {topic} and if its a video, transcribe everything said in it
+    and if its a website, return all relevant text from within
+  expected_output: >
+    An entire transcript from {topic} in a neat, readable manner, seperating texts
+    in relevant sections depending on their topic and source while being very precise
+    in the transcript given, with maximum effort given to ignoring unecessary text such as
+    website headers.
+  agent: transcriber
 

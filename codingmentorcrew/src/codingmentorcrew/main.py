@@ -17,15 +17,44 @@ def run():
     """
     Run the crew.
     """
+
     inputs = {
-        'topic': str(input("What do you need help with?:")),
+        'topic': str(input("How may I help?:")),
         'current_year': str(datetime.now().year)
     }
-    
     try:
         Codingmentorcrew().crew().kickoff(inputs=inputs)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 def train():
