@@ -24,6 +24,6 @@ def run():
     }
     try:
         result = Codingmentorcrew().crew().kickoff(inputs=inputs)
-        print("YYABALBALBAwW", result)
+        print("test result output" result)
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
