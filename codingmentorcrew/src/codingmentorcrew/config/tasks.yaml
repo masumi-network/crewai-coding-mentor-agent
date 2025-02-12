@@ -1,24 +1,13 @@
 mentorship_task:
   description: >
-    Conduct a thorough research about {topic} regarding programming
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
-    Returning video and website resources in order to answer the question regarding {topic}.
+    Search online with the prompt of {topic} tutorial.
+    then get the first successful URL,if there is an error, go to the next
+    and so so and so forth. pass it into the web scraping tool
+    and return the result
   expected_output: >
-    A brief summary about the answer to {topic} along with 10 bullet points,
-    the first five being useful websites that answer the question on {topic}
-    and the other five being useful videos regarding {topic}.
-  agent: mentor
+    the result from the web scraping tool after the first successful URL when searching for {topic}
+    has been scraped. do not edit the content, the raw output must be returned
+  agent: scraper
 
 
-transcribe_task:
-  description: >
-    View {topic} and if its a video, transcribe everything said in it
-    and if its a website, return all relevant text from within
-  expected_output: >
-    An entire transcript from {topic} in a neat, readable manner, seperating texts
-    in relevant sections depending on their topic and source while being very precise
-    in the transcript given, with maximum effort given to ignoring unecessary text such as
-    website headers.
-  agent: transcriber
 
