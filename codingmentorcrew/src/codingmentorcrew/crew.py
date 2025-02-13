@@ -19,7 +19,7 @@ tool = ScrapeWebsiteTool(website_url=site)
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
 @CrewBase
-class ReferenceCrew():
+class Codingmentorcrew():
 	"""ReferenceCrew crew"""
 
 	# Learn more about YAML configuration files here:
