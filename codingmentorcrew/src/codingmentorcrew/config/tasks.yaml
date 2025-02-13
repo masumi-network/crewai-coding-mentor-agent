@@ -1,13 +1,9 @@
-mentorship_task:
+scrape_task:
   description: >
-    Search online with the prompt of {topic} tutorial.
-    then get the first successful URL,if there is an error, go to the next
-    and so so and so forth. pass it into the web scraping tool
-    and return the result
+    Conduct a thorough scrape of a website with from a given URL using
+    provided tools and return all scraped content in a neat and readable manner.
   expected_output: >
-    the result from the web scraping tool after the first successful URL when searching for {topic}
-    has been scraped. do not edit the content, the raw output must be returned
+    All scraped content from the website in a readable structure
   agent: scraper
-
 
 

@@ -1,26 +1,19 @@
 from crewai.tools import BaseTool
 from typing import Type
 from pydantic import BaseModel, Field
-import requests
-from bs4 import BeautifulSoup
 
-class WebScraperInput(BaseModel):
-    """Input schema for Web scraper."""
-    website_url: str = Field(..., description="URL of the website to be scraped.")
 
-class WebScraperTool(BaseTool):
-    name: str = "Web Scraper Tool"
+class MyCustomToolInput(BaseModel):
+    """Input schema for MyCustomTool."""
+    argument: str = Field(..., description="Description of the argument.")
+
+class MyCustomTool(BaseTool):
+    name: str = "Name of my tool"
     description: str = (
-        "Scrapes website content to return HTML text."
+        "Clear description for what this tool is useful for, your agent will need this information to use it."
     )
-    args_schema: Type[BaseModel] = WebScraperInput
+    args_schema: Type[BaseModel] = MyCustomToolInput
 
-    def _run(self, website_url: str) -> str:
-
-        website_url = website_url.strip('"')
-        
-        contenta = requests.get(website_url)
-
-        soup = BeautifulSoup(contents.content, 'html5lib')
-
-        return soup.prettify()
+    def _run(self, argument: str) -> str:
+        # Implementation goes here
+        return "this is an example of a tool output, ignore it and move along."
