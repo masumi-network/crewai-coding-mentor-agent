@@ -3,16 +3,19 @@ from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import ScrapeWebsiteTool
 from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
+from crewai_tools import FileWriterTool
 import os
 
 load_dotenv()
-Model = 'gpt-4'
+Model = 'gpt-4o'
 api_key = os.getenv('OPENAI_API_KEY')
 llm = ChatOpenAI(model = Model,api_key=api_key)
 
 
 site = 'https://www.geeksforgeeks.org/merge-sort/'
 tool = ScrapeWebsiteTool(website_url=site)
+
+file_writer = FileWriterTool()
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -62,4 +65,5 @@ class Codingmentorcrew():
 			verbose=True,
 			# process=Process.hierarchical,  # Alternative process mode
 		)
-
+	#	def fileWrite(input):
+			#file_writer._run('example.txt', input, 'C:\Users\natha\Desktop\Baxtos Kebab')	

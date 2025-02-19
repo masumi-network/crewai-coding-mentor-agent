@@ -1,9 +1,13 @@
 scrape_task:
   description: >
     Conduct a thorough scrape of a website with from a given URL using
-    provided tools and return all scraped content in a neat and readable manner.
+    provided tools and return all scraped content following these guidelines:
+    - All Metadata should be ignored
+    - Output should be a well-formatted, easily readable
+
   expected_output: >
-    All scraped content from the website in a readable structure
+    All scraped content from the website following the 
+    pre defined guidelines
   agent: scraper
 
 
