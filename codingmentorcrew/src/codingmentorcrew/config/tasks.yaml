@@ -25,14 +25,11 @@ scrape_task:
 
     -in the final answer, display all content that was scraped from all websites.
     absolutley NO content can be left out. This is a requirement
-    
+
     -At the end of the final output, state all URS visited and which ones
     were successfully scraped and which ones
     returned errors (if any)
 
-    
-
-  
   expected_output: >
     All scraped content from the websites following the 
     pre defined guidelines
@@ -51,3 +48,6 @@ retriever_task:
     share the same domain, this is mandatory
   agent: retriever
 
+mentor_task: 
+  description: >
+   
