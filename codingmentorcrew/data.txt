@@ -1,44 +1,178 @@
-Merge Sort - Data Structure and Algorithms Tutorials - GeeksforGeeks
+Scraped Content from https://www.w3schools.com/java/java_for_loop.asp:
+Java For Loop
+When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:
+Syntax
+for ( statement 1 ; statement 2 ; statement 3 ) {
+  // code block to be executed 
+}
+Statement 1 is executed (one time) before the execution of the code block.
+Statement 2 defines the condition for executing the code block.
+Statement 3 is executed (every time) after the code block has been executed.
+The example below will print the numbers 0 to 4:
+Example
+for (int i = 0; i < 5; i++) {
+  System.out.println(i);
+}
+Example explained
+Statement 1 sets a variable before the loop starts (int i = 0).
+Statement 2 defines the condition for the loop to run (i must be less than 5). If the condition is true, the loop will start over again, if it is false, the loop will end.
+Statement 3 increases a value (i++) each time the code block in the loop has been executed.
+Another Example
+This example will only print even values between 0 and 10:
+Example
+for (int i = 0; i <= 10; i = i + 2) {
+  System.out.println(i);
+}
 
-Skip to content
+Scraped Content from https://www.geeksforgeeks.org/java-for-loop-with-examples/:
+Java for loop is a control flow statement that allows code to be executed repeatedly based on a given condition. The for loop in Java provides an efficient way to iterate over a range of values, execute code multiple times, or traverse arrays and collections.
+Example:
+Java
+class Geeks {
+public static void main ( String args [] ) {
+// for loop to print numbers from 1 to 5
+for ( int i = 1 ; i <= 5 ; i ++ ) {
+System . out . println ( "" + i );
+}
+System . out . println ( "Loop has ended." );
+}
+}
+Output 1
+2
+3
+4
+5
+Loop has ended.
+ Dry-Running Above Example
+The program starts. The for loop initializes i to 1. Condition i <= 5 is checked. If true: Statement inside the loop executes, printing the current value of i. Increment i by 1. If false: Loop terminates, and the program continues. Steps repeat until i becomes 6, at which point the condition fails, and “Loop has ended.” is printed. Syntax for (initialization expr; test expr; update exp) { // body of the loop // statements we want to execute }
+Working Control enters the for loop . Initialization is executed once at the beginning of the loop. The Condition is evaluated: If true, the control moves to Step 4. If false, the control jumps to Step 7. The body of the loop is executed. Control moves to the Updation step. After Updation , the flow returns to the Condition (Step 3) and repeats the process. Once the condition becomes false, the control exits the for loop, and statements outside the loop are executed.
+Example 1: Printing Numbers from 1 to 10
+Java
+// Java program to print numbers from 1 to 10
+class GFG {
+public static void main ( String [] args ) {
+for ( int i = 1 ; i <= 10 ; i ++ ) {
+System . out . println ( i );
+}
+}
+}
+Output 1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+Example 2: Printing “Hello World” 5 Times
+Java
+// Java program to illustrate for loop
+class GFG {
+public static void main ( String args [] ) {
+// Writing a for loop
+// to print Hello World 5 times
+for ( int i = 1 ; i <= 5 ; i ++ )
+System . out . println ( "Hello World" );
+}
+}
+Output Hello World
+Hello World
+Hello World
+Hello World
+Hello World
+Example 3: Calculating Sum from 1 to 20
+Java
+// Java program to calculate the
+// sum of numbers from 1 to 20
+class GFG {
+public static void main ( String args [] ) {
+int s = 0 ;
+// for loop begins
+// and runs till x <= 20
+for ( int x = 1 ; x <= 20 ; x ++ ) {
+s = s + x ;
+}
+System . out . println ( "Sum: " + s );
+}
+}
+Output Sum: 210
 
-Courses DSA to Development Machine Learning & Data Science Generative AI & ChatGPT Become AWS Certified DSA Courses Data Structure & Algorithm(C++/JAVA) Data Structure & Algorithm(Python) Data Structure & Algorithm(JavaScript) Programming Languages CPP Java Python JavaScript C All Courses Tutorials Python Python Tutorial Python Programs Python Quiz Python Projects Python Interview Questions Python Data Structures Java Java Tutorial Java Collections Java 8 Tutorial Java Programs Java Quiz Java Projects Java Interview Questions Advanced Java Programming Languages JavaScript C++ R Tutorial SQL PHP C# C Scala Perl Go Language Kotlin System Design System Design Tutorial Software Design Patterns System Design Roadmap Top 10 System Design Interview Questions and Answers Interview Corner Company Preparation Top Topics Practice Company Questions Interview Experiences Experienced Interviews Internship Interviews Competitive Programming Multiple Choice Quizzes Aptitude for Placements Computer Science Subjects Operating System DBMS Computer Networks Engineering Mathematics Computer Organization and Architecture Theory of Computation Compiler Design Digital Logic Software Engineering DevOps GIT AWS Docker Kubernetes Microsoft Azure Tutorial Google Cloud Platform Linux Linux Tutorial Linux Commands A-Z Linux Commands Cheatsheet File Permission Commands Linux System Administration Linux File System Linux Shell Scripting Linux Networking Linux Interview Questions Software Testing Software Testing Tutorial Software Engineering Tutorial Testing Interview Questions Jira Databases DBMS Tutorial SQL Tutorial PostgreSQL Tutorial MongoDB Tutorial SQL Interview Questions MySQL Interview Questions PL/SQL Interview Questions Android Android Tutorial Android Studio Tutorial Kotlin For Android Android Projects Android Interview Questions 6 Weeks of Android App Development Excel MS Excel Tutorial Introduction to MS Excel Data Analysis in Excel Basic Excel Formulas & Functions Data Analysis in Advanced Excel Workbooks Statistical Functions Data Visualization in Excel Pivot Tables in Excel Excel Spreadsheets in Python Basic Excel Shortcuts Mathematics Number System Algebra Linear Algebra Trigonometry Set Theory Statistics Probability Geometry Mensuration Logarithms Calculus DSA Data Structures Arrays Matrix Strings Linked List Stack Queue Tree Heap Hashing Graph Set Data Structure Map Data Structure Advanced Data Structure Data Structures Tutorial Algorithms Analysis of Algorithms Design and Analysis of Algorithms Asymptotic Analysis Asymptotic Notations Worst, Average and Best Cases Searching Algorithms Linear Search Binary Search Searching Algorithms Tutorial Sorting Algorithms Selection Sort Bubble Sort Insertion Sort Merge Sort Quick Sort Heap Sort Counting Sort Radix Sort Bucket Sort Sorting Algorithms Tutorial Greedy Algorithms Dynamic Programming Graph Algorithms Pattern Searching Recursion Backtracking Divide and Conquer Mathematical Algorithms Geometric Algorithms Bitwise Algorithms Randomized Algorithms Branch and Bound Algorithms Tutorial DSA Tutorial Practice All DSA Problems Problem of the Day Company Wise Coding Practice Amazon Microsoft Flipkart Explore All GfG SDE Sheet Practice Problems Difficulty Wise School Basic Easy Medium Hard Language Wise Coding Practice CPP Java Python Curated DSA Lists Beginner's DSA Sheet Top 50 Array Problems Top 50 String Problems Top 50 DP Problems Top 50 Graph Problems Top 50 Tree Problems Competitive Programming Company Wise SDE Sheets Facebook SDE Sheet Amazon SDE Sheet Apple SDE Sheet Netflix SDE Sheet Google SDE Sheet DSA Cheat Sheets SDE Sheet DSA Sheet for Beginners FAANG Coding Sheet Product-Based Coding Sheet Company-Wise Preparation Sheet Top Interview Questions Puzzles All Puzzles Top 100 Puzzles Asked In Interviews Top 20 Puzzles Commonly Asked During SDE Interviews Data Science Python Tutorial R Tutorial Machine Learning Data Science using Python Data Science using R Data Science Packages Pandas Tutorial NumPy Tutorial Data Visualization Python Data Visualization Tutorial Data Visualization with R Data Analysis Data Analysis with Python Data Analysis with R Deep Learning NLP Tutorial Web Tech HTML Tutorial CSS Tutorial JavaScript Tutorial PHP Tutorial ReactJS Tutorial NodeJS Tutorial Bootstrap Tutorial Typescript Web Development Using Python Django Django Tutorial Django Projects Django Interview Questions Flask Flask Tutorial Flask Projects Flask Interview Questions Postman Github Cheat Sheets HTML Cheat Sheet CSS Cheat Sheet JavaScript Cheat Sheet React Cheat Sheet Angular Cheat Sheet jQuery Cheat Sheet Bootstrap Cheat Sheet Learn Complete Web Development
+Scraped Content from https://www.programiz.com/java-programming/for-loop:
+Java for Loop (With Examples)
+In computer programming, loops are used to repeat a block of code. For example, if you want to show a message 100 times, then rather than typing the same code 100 times, you can use a loop.
+In Java, there are three types of loops.
+for loop
+while loop
+do...while loop
+This tutorial focuses on the for loop. You will learn about the other types of loops in the upcoming tutorials.
+Java for Loop
+Java for loop is used to run a block of code for a certain number of times. The syntax of for loop is:
+for (initialExpression; testExpression; updateExpression) {
+ // body of the loop
+}
+Here,
+The initialExpression initializes and/or declares variables and executes only once.
+The condition is evaluated. If the condition is true , the body of the for loop is executed.
+The updateExpression updates the value of initialExpression .
+The condition is evaluated again. The process continues until the condition is false .
+Example 1: Display a Text Five Times
+// Program to print a text 5 times
 
-DSA Practice Divide and Conquer MCQs on Divide and Conquer Tutorial on Divide & Conquer Binary Search Merge Sort Quick Sort Calculate Power Strassen's Matrix Multiplication Karatsuba Algorithm Divide and Conquer Optimization Closest Pair of Points
+class Main {
+ public static void main(String[] args) {
+int n = 5;
+ // for loop
+for (int i = 1; i <= n; ++i) {
+ System.out.println("Java is fun");
+ }
+ }
+}
+Output
+Java is fun
+Java is fun
+Java is fun
+Java is fun
+Java is fun
+Example 2: Display numbers from 1 to 5
+// Program to print numbers from 1 to 5
 
-Merge Sort – Data Structure and Algorithms Tutorials
+class Main {
+ public static void main(String[] args) {
+int n = 5;
+ // for loop
+for (int i = 1; i <= n; ++i) {
+ System.out.println(i);
+ }
+ }
+}
+Output
+1
+2
+3
+4
+5
+Example 3: Display Sum of n Natural Numbers
+// Program to find the sum of natural numbers from 1 to 1000.
 
-Last Updated : 29 Jan, 2025 Summarize Comments Improve Suggest changes Like Article Like Share Report Follow Try it on GfG Practice
+class Main {
+ public static void main(String[] args) {
+int sum = 0;
+ int n = 1000;
+// for loop
+ for (int i = 1; i <= n; ++i) {
+ // body inside for loop
+ sum += i; // sum = sum + i
+ }
+System.out.println("Sum = " + sum);
+ }
+}
+Output :
+Sum = 500500
 
-Merge sort is a sorting algorithm that follows the divide-and-conquer approach. It works by recursively dividing the input array into smaller subarrays and sorting those subarrays then merging them back together to obtain the sorted array. In simple terms, we can say that the process of merge sort is to divide the array into two halves, sort each half, and then merge the sorted halves back together. This process is repeated until the entire array is sorted.
-
-Merge Sort Algorithm Table of Content How does Merge Sort work? Illustration of Merge Sort: Implementation of Merge Sort Recurrence Relation of Merge Sort Complexity Analysis of Merge Sort Applications of Merge Sort: Advantages and Disadvantages of Merge Sort How does Merge Sort work? Merge sort is a popular sorting algorithm known for its efficiency and stability. It follows the divide-and-conquer approach to sort a given array of elements. Here’s a step-by-step explanation of how merge sort works:
-
-Divide: Divide the list or array recursively into two halves until it can no more be divided. Conquer: Each subarray is sorted individually using the merge sort algorithm. Merge: The sorted subarrays are merged back together in sorted order. The process continues until all elements from both subarrays have been merged. Illustration of Merge Sort: Let’s sort the array or list [38, 27, 43, 10] using Merge Sort Let’s look at the working of above example:
-
-Divide: [38, 27, 43, 10] is divided into [38, 27 ] and [43, 10] . [38, 27] is divided into [38] and [27] . [43, 10] is divided into [43] and [10] . Conquer: [38] is already sorted. [27] is already sorted. [43] is already sorted. [10] is already sorted. Merge: Merge [38] and [27] to get [27, 38] . Merge [43] and [10] to get [10,43] . Merge [27, 38] and [10,43] to get the final sorted list [10, 27, 38, 43] Therefore, the sorted list is [10, 27, 38, 43] .
-
-Implementation of Merge Sort C++ #include <bits/stdc++.h> using namespace std ; // Merges two subarrays of arr[]. // First subarray is arr[left..mid] // Second subarray is arr[mid+1..right] void merge ( vector < int >& arr , int left , int mid , int right ) { int n1 = mid - left + 1 ; int n2 = right - mid ; // Create temp vectors vector < int > L ( n1 ), R ( n2 ); // Copy data to temp vectors L[] and R[] for ( int i = 0 ; i < n1 ; i ++ ) L [ i ] = arr [ left + i ]; for ( int j = 0 ; j < n2 ; j ++ ) R [ j ] = arr [ mid + 1 + j ]; int i = 0 , j = 0 ; int k = left ; // Merge the temp vectors back // into arr[left..right] while ( i < n1 && j < n2 ) { if ( L [ i ] <= R [ j ]) { arr [ k ] = L [ i ]; i ++ ; } else { arr [ k ] = R [ j ]; j ++ ; } k ++ ; } // Copy the remaining elements of L[], // if there are any while ( i < n1 ) { arr [ k ] = L [ i ]; i ++ ; k ++ ; } // Copy the remaining elements of R[], // if there are any while ( j < n2 ) { arr [ k ] = R [ j ]; j ++ ; k ++ ; } } // begin is for left index and end is right index // of the sub-array of arr to be sorted void mergeSort ( vector < int >& arr , int left , int right ) { if ( left >= right ) return ; int mid = left + ( right - left ) / 2 ; mergeSort ( arr , left , mid ); mergeSort ( arr , mid + 1 , right ); merge ( arr , left , mid , right ); } // Function to print a vector void printVector ( vector < int >& arr ) { for ( int i = 0 ; i < arr . size (); i ++ ) cout << arr [ i ] << " " ; cout << endl ; } // Driver code int main () { vector < int > arr = { 12 , 11 , 13 , 5 , 6 , 7 }; int n = arr . size (); cout << "Given vector is \n " ; printVector ( arr ); mergeSort ( arr , 0 , n - 1 ); cout << " \n Sorted vector is \n " ; printVector ( arr ); return 0 ; }
-
-C // C program for Merge Sort #include <stdio.h> #include <stdlib.h> // Merges two subarrays of arr[]. // First subarray is arr[l..m] // Second subarray is arr[m+1..r] void merge ( int arr [], int l , int m , int r ) { int i , j , k ; int n1 = m - l + 1 ; int n2 = r - m ; // Create temp arrays int L [ n1 ], R [ n2 ]; // Copy data to temp arrays L[] and R[] for ( i = 0 ; i < n1 ; i ++ ) L [ i ] = arr [ l + i ]; for ( j = 0 ; j < n2 ; j ++ ) R [ j ] = arr [ m + 1 + j ]; // Merge the temp arrays back into arr[l..r i = 0 ; j = 0 ; k = l ; while ( i < n1 && j < n2 ) { if ( L [ i ] <= R [ j ]) { arr [ k ] = L [ i ]; i ++ ; } else { arr [ k ] = R [ j ]; j ++ ; } k ++ ; } // Copy the remaining elements of L[], // if there are any while ( i < n1 ) { arr [ k ] = L [ i ]; i ++ ; k ++ ; } // Copy the remaining elements of R[], // if there are any while ( j < n2 ) { arr [ k ] = R [ j ]; j ++ ; k ++ ; } } // l is for left index and r is right index of the // sub-array of arr to be sorted void mergeSort ( int arr [], int l , int r ) { if ( l < r ) { int m = l + ( r - l ) / 2 ; // Sort first and second halves mergeSort ( arr , l , m ); mergeSort ( arr , m + 1 , r ); merge ( arr , l , m , r ); } } // Function to print an array void printArray ( int A [], int size ) { int i ; for ( i = 0 ; i < size ; i ++ ) printf ( "%d " , A [ i ]); printf ( " \n " ); } // Driver code int main () { int arr [] = { 12 , 11 , 13 , 5 , 6 , 7 }; int arr_size = sizeof ( arr ) / sizeof ( arr [ 0 ]); printf ( "Given array is \n " ); printArray ( arr , arr_size ); mergeSort ( arr , 0 , arr_size - 1 ); printf ( " \n Sorted array is \n " ); printArray ( arr , arr_size ); return 0 ; }
-
-Java // Java program for Merge Sort import java.io.* ; class GfG { // Merges two subarrays of arr[]. // First subarray is arr[l..m] // Second subarray is arr[m+1..r] static void merge ( int arr [] , int l , int m , int r ) { // Find sizes of two subarrays to be merged int n1 = m - l + 1 ; int n2 = r - m ; // Create temp arrays int L [] = new int [ n1 ] ; int R [] = new int [ n2 ] ; // Copy data to temp arrays for ( int i = 0 ; i < n1 ; ++ i ) L [ i ] = arr [ l + i ] ; for ( int j = 0 ; j < n2 ; ++ j ) R [ j ] = arr [ m + 1 + j ] ; // Merge the temp arrays // Initial indices of first and second subarrays int i = 0 , j = 0 ; // Initial index of merged subarray array int k = l ; while ( i < n1 && j < n2 ) { if ( L [ i ] <= R [ j ] ) { arr [ k ] = L [ i ] ; i ++ ; } else { arr [ k ] = R [ j ] ; j ++ ; } k ++ ; } // Copy remaining elements of L[] if any while ( i < n1 ) { arr [ k ] = L [ i ] ; i ++ ; k ++ ; } // Copy remaining elements of R[] if any while ( j < n2 ) { arr [ k ] = R [ j ] ; j ++ ; k ++ ; } } // Main function that sorts arr[l..r] using // merge() static void sort ( int arr [] , int l , int r ) { if ( l < r ) { // Find the middle point int m = l + ( r - l ) / 2 ; // Sort first and second halves sort ( arr , l , m ); sort ( arr , m + 1 , r ); // Merge the sorted halves merge ( arr , l , m , r ); } } // A utility function to print array of size n static void printArray ( int arr [] ) { int n = arr . length ; for ( int i = 0 ; i < n ; ++ i ) System . out . print ( arr [ i ] + " " ); System . out . println (); } // Driver code public static void main ( String args [] ) { int arr [] = { 12 , 11 , 13 , 5 , 6 , 7 }; System . out . println ( "Given array is" ); printArray ( arr ); sort ( arr , 0 , arr . length - 1 ); System . out . println ( "\nSorted array is" ); printArray ( arr ); } }
-
-Python def merge ( arr , left , mid , right ): n1 = mid - left + 1 n2 = right - mid # Create temp arrays L = [ 0 ] * n1 R = [ 0 ] * n2 # Copy data to temp arrays L[] and R[] for i in range ( n1 ): L [ i ] = arr [ left + i ] for j in range ( n2 ): R [ j ] = arr [ mid + 1 + j ] i = 0 # Initial index of first subarray j = 0 # Initial index of second subarray k = left # Initial index of merged subarray # Merge the temp arrays back # into arr[left..right] while i < n1 and j < n2 : if L [ i ] <= R [ j ]: arr [ k ] = L [ i ] i += 1 else : arr [ k ] = R [ j ] j += 1 k += 1 # Copy the remaining elements of L[], # if there are any while i < n1 : arr [ k ] = L [ i ] i += 1 k += 1 # Copy the remaining elements of R[], # if there are any while j < n2 : arr [ k ] = R [ j ] j += 1 k += 1 def merge_sort ( arr , left , right ): if left < right : mid = ( left + right ) // 2 merge_sort ( arr , left , mid ) merge_sort ( arr , mid + 1 , right ) merge ( arr , left , mid , right ) def print_list ( arr ): for i in arr : print ( i , end = " " ) print () # Driver code if __name__ == "__main__" : arr = [ 12 , 11 , 13 , 5 , 6 , 7 ] print ( "Given array is" ) print_list ( arr ) merge_sort ( arr , 0 , len ( arr ) - 1 ) print ( " \n Sorted array is" ) print_list ( arr )
-
-C# // C# program for Merge Sort using System ; class GfG { // Merges two subarrays of []arr. // First subarray is arr[l..m] // Second subarray is arr[m+1..r] static void merge ( int [] arr , int l , int m , int r ) { // Find sizes of two // subarrays to be merged int n1 = m - l + 1 ; int n2 = r - m ; // Create temp arrays int [] L = new int [ n1 ]; int [] R = new int [ n2 ]; int i , j ; // Copy data to temp arrays for ( i = 0 ; i < n1 ; ++ i ) L [ i ] = arr [ l + i ]; for ( j = 0 ; j < n2 ; ++ j ) R [ j ] = arr [ m + 1 + j ]; // Merge the temp arrays // Initial indexes of first // and second subarrays i = 0 ; j = 0 ; // Initial index of merged // subarray array int k = l ; while ( i < n1 && j < n2 ) { if ( L [ i ] <= R [ j ]) { arr [ k ] = L [ i ]; i ++ ; } else { arr [ k ] = R [ j ]; j ++ ; } k ++ ; } // Copy remaining elements // of L[] if any while ( i < n1 ) { arr [ k ] = L [ i ]; i ++ ; k ++ ; } // Copy remaining elements // of R[] if any while ( j < n2 ) { arr [ k ] = R [ j ]; j ++ ; k ++ ; } } // Main function that // sorts arr[l..r] using // merge() static void mergeSort ( int [] arr , int l , int r ) { if ( l < r ) { // Find the middle point int m = l + ( r - l ) / 2 ; // Sort first and second halves mergeSort ( arr , l , m ); mergeSort ( arr , m + 1 , r ); // Merge the sorted halves merge ( arr , l , m , r ); } } // A utility function to // print array of size n static void printArray ( int [] arr ) { int n = arr . Length ; for ( int i = 0 ; i < n ; ++ i ) Console . Write ( arr [ i ] + " " ); Console . WriteLine (); } // Driver code public static void Main ( String [] args ) { int [] arr = { 12 , 11 , 13 , 5 , 6 , 7 }; Console . WriteLine ( "Given array is" ); printArray ( arr ); mergeSort ( arr , 0 , arr . Length - 1 ); Console . WriteLine ( "\nSorted array is" ); printArray ( arr ); } }
-
-JavaScript function merge ( arr , left , mid , right ) { const n1 = mid - left + 1 ; const n2 = right - mid ; // Create temp arrays const L = new Array ( n1 ); const R = new Array ( n2 ); // Copy data to temp arrays L[] and R[] for ( let i = 0 ; i < n1 ; i ++ ) L [ i ] = arr [ left + i ]; for ( let j = 0 ; j < n2 ; j ++ ) R [ j ] = arr [ mid + 1 + j ]; let i = 0 , j = 0 ; let k = left ; // Merge the temp arrays back into arr[left..right] while ( i < n1 && j < n2 ) { if ( L [ i ] <= R [ j ]) { arr [ k ] = L [ i ]; i ++ ; } else { arr [ k ] = R [ j ]; j ++ ; } k ++ ; } // Copy the remaining elements of L[], if there are any while ( i < n1 ) { arr [ k ] = L [ i ]; i ++ ; k ++ ; } // Copy the remaining elements of R[], if there are any while ( j < n2 ) { arr [ k ] = R [ j ]; j ++ ; k ++ ; } } function mergeSort ( arr , left , right ) { if ( left >= right ) return ; const mid = Math . floor ( left + ( right - left ) / 2 ); mergeSort ( arr , left , mid ); mergeSort ( arr , mid + 1 , right ); merge ( arr , left , mid , right ); } function printArray ( arr ) { console . log ( arr . join ( " " )); } // Driver code const arr = [ 12 , 11 , 13 , 5 , 6 , 7 ]; console . log ( "Given array is" ); printArray ( arr ); mergeSort ( arr , 0 , arr . length - 1 ); console . log ( "\nSorted array is" ); printArray ( arr );
-
-PHP <?php /* PHP recursive program for Merge Sort */ // Merges two subarrays of arr[]. // First subarray is arr[l..m] // Second subarray is arr[m+1..r] function merge ( & $arr , $l , $m , $r ) { $n1 = $m - $l + 1 ; $n2 = $r - $m ; // Create temp arrays $L = array (); $R = array (); // Copy data to temp arrays L[] and R[] for ( $i = 0 ; $i < $n1 ; $i ++ ) $L [ $i ] = $arr [ $l + $i ]; for ( $j = 0 ; $j < $n2 ; $j ++ ) $R [ $j ] = $arr [ $m + 1 + $j ]; // Merge the temp arrays back into arr[l..r] $i = 0 ; $j = 0 ; $k = $l ; while ( $i < $n1 && $j < $n2 ) { if ( $L [ $i ] <= $R [ $j ]) { $arr [ $k ] = $L [ $i ]; $i ++ ; } else { $arr [ $k ] = $R [ $j ]; $j ++ ; } $k ++ ; } // Copy the remaining elements of L[], // if there are any while ( $i < $n1 ) { $arr [ $k ] = $L [ $i ]; $i ++ ; $k ++ ; } // Copy the remaining elements of R[], // if there are any while ( $j < $n2 ) { $arr [ $k ] = $R [ $j ]; $j ++ ; $k ++ ; } } // l is for left index and r is right index of the // sub-array of arr to be sorted function mergeSort ( & $arr , $l , $r ) { if ( $l < $r ) { $m = $l + ( int )(( $r - $l ) / 2 ); // Sort first and second halves mergeSort ( $arr , $l , $m ); mergeSort ( $arr , $m + 1 , $r ); merge ( $arr , $l , $m , $r ); } } // Function to print an array function printArray ( $A , $size ) { for ( $i = 0 ; $i < $size ; $i ++ ) echo $A [ $i ] . " " ; echo " \n " ; } // Driver code $arr = array ( 12 , 11 , 13 , 5 , 6 , 7 ); $arr_size = sizeof ( $arr ); echo "Given array is \n " ; printArray ( $arr , $arr_size ); mergeSort ( $arr , 0 , $arr_size - 1 ); echo " \n Sorted array is \n " ; printArray ( $arr , $arr_size ); return 0 ; //This code is contributed by Susobhan Akhuli ?>
-
-Output Given array is 12 11 13 5 6 7 Sorted array is 5 6 7 11 12 13
-
-Recurrence Relation of Merge Sort The recurrence relation of merge sort is: [Tex]T(n) = \begin{cases} \Theta(1) & \text{if } n = 1 \\ 2T\left(\frac{n}{2}\right) + \Theta(n) & \text{if } n > 1 \end{cases}[/Tex]
-
-T(n) Represents the total time time taken by the algorithm to sort an array of size n. 2T(n/2) represents time taken by the algorithm to recursively sort the two halves of the array. Since each half has n/2 elements, we have two recursive calls with input size as (n/2). O(n) represents the time taken to merge the two sorted halves Complexity Analysis of Merge Sort Time Complexity: Best Case: O(n log n), When the array is already sorted or nearly sorted. Average Case: O(n log n), When the array is randomly ordered. Worst Case: O(n log n), When the array is sorted in reverse order. Auxiliary Space: O(n), Additional space is required for the temporary array used during merging.
-
-Applications of Merge Sort: Sorting large datasets External sorting (when the dataset is too large to fit in memory) Inversion counting Merge Sort and its variations are used in library methods of programming languages. Its variation TimSort is used in Python, Java Android and Swift. The main reason why it is preferred to sort non-primitive types is stability which is not there in QuickSort. Arrays.sort in Java uses QuickSort while Collections.sort uses MergeSort. It is a preferred algorithm for sorting Linked lists. It can be easily parallelized as we can independently sort subarrays and then merge. The merge function of merge sort to efficiently solve the problems like union and intersection of two sorted arrays .
-
-Advantages and Disadvantages of Merge Sort Advantages Stability : Merge sort is a stable sorting algorithm, which means it maintains the relative order of equal elements in the input array. Guaranteed worst-case performance: Merge sort has a worst-case time complexity of O(N logN) , which means it performs well even on large datasets. Simple to implement: The divide-and-conquer approach is straightforward. Naturally Parallel : We independently merge subarrays that makes it suitable for parallel processing. Disadvantages Space complexity: Merge sort requires additional memory to store the merged sub-arrays during the sorting process. Not in-place: Merge sort is not an in-place sorting algorithm, which means it requires additional memory to store the sorted data. This can be a disadvantage in applications where memory usage is a concern. Merge Sort is Slower than QuickSort in general as QuickSort is more cache friendly because it works in-place. Quick Links: Merge Sort Based Coding Questions Bottom up (or Iterative) Merge Sort Recent Articles on Merge Sort Top Sorting Interview Questions and Problems Practice problems on Sorting algorithm Quiz on Merge Sort
+Visited URLs:
+1. https://www.w3schools.com/java/java_for_loop.asp - Successfully scraped
+2. https://www.geeksforgeeks.org/java-for-loop-with-examples/ - Successfully scraped
+3. https://www.programiz.com/java-programming/for-loop - Successfully scraped
 ```

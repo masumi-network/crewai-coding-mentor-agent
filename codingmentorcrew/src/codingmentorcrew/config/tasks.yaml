@@ -1,13 +1,53 @@
 scrape_task:
   description: >
-    Conduct a thorough scrape of a website with from a given URL using
+    Conduct a thorough scrape of all websites from a list of given URLs using
     provided tools and return all scraped content following these guidelines:
-    - All Metadata should be ignored
-    - Output should be a well-formatted, easily readable
 
+    -Output must be a list of scraped content seperated by website.
+
+    -ALL website content should be returned,
+     regardless of length or relevance to the search query. 
+     this is a requirement (except metadata). A different agent
+     will interpret the output anyway
+
+    - All Metadata should be ignored
+
+    - Output cannot be shortened in any way,
+      all content should be returned as found in the website
+
+    -Output the scraped data of one websited before scraping the next in 
+     sequence.
+
+    - avoid any use of asterisks (*) in the output, this is of utmost priority
+
+    -If a website is inaccessible, completely ignore it and move
+     onto the next one in the list
+
+    -in the final answer, display all content that was scraped from all websites.
+    absolutley NO content can be left out. This is a requirement
+    
+    -At the end of the final output, state all URS visited and which ones
+    were successfully scraped and which ones
+    returned errors (if any)
+
+    
+
+  
   expected_output: >
-    All scraped content from the website following the 
+    All scraped content from the websites following the 
     pre defined guidelines
   agent: scraper
 
+retriever_task:
+  description: >
+    Analyse the contents of {topic} and identify unique website URLS
+    within, and returning every single one was they appeared
+    in the order that they appeared, without duplicate domains
+
+  expected_output: >
+    The unique, correct URLS of the websites in {topic}
+    In a well formatted manner and in the order of which they appeared.
+    Each URL should also have a unique domain. No two URLS should
+    share the same domain, this is mandatory
+  agent: retriever
 
