@@ -31,9 +31,143 @@ scrape_task:
     returned errors (if any)
 
   expected_output: >
-    All scraped content from the websites following the 
+    All scraped content from the first website following the 
     pre defined guidelines
   agent: scraper
+
+scrape2_task:
+  description: >
+    Conduct a thorough scrape of the SECOND website from a list of given URLs using
+    provided tools and return all scraped content following these guidelines:
+
+    -Output must be a list of scraped content seperated by website.
+
+    -ALL website content should be returned,
+     regardless of length or relevance to the search query. 
+     this is a requirement (except metadata). A different agent
+     will interpret the output anyway
+
+    - All Metadata should be ignored
+
+    - Output cannot be shortened in any way,
+      all content should be returned as found in the website
+
+    - avoid any use of asterisks (*) in the output, this is of utmost priority
+
+    -If a website is inaccessible, completely ignore it and return 
+    "(WEBSITE URL) was not accessible"
+
+    -in the final answer, display all content that was scraped from the first website.
+    absolutley NO content can be left out. This is a requirement
+
+    -At the end of the final output, state the URL visited
+    and wether or not scraping was successful
+
+  expected_output: >
+    All scraped content from the second website following the 
+    pre defined guidelines
+  agent: scraper2
+
+scrape3_task:
+  description: >
+    Conduct a thorough scrape of the THIRD website from a list of given URLs using
+    provided tools and return all scraped content following these guidelines:
+
+    -Output must be a list of scraped content seperated by website.
+
+    -ALL website content should be returned,
+     regardless of length or relevance to the search query. 
+     this is a requirement (except metadata). A different agent
+     will interpret the output anyway
+
+    - All Metadata should be ignored
+
+    - Output cannot be shortened in any way,
+      all content should be returned as found in the website
+
+    - avoid any use of asterisks (*) in the output, this is of utmost priority
+
+    -If a website is inaccessible, completely ignore it and return 
+    "(WEBSITE URL) was not accessible"
+
+    -in the final answer, display all content that was scraped from the first website.
+    absolutley NO content can be left out. This is a requirement
+
+    -At the end of the final output, state the URL visited
+    and wether or not scraping was successful
+
+  expected_output: >
+    All scraped content from the second website following the 
+    pre defined guidelines
+  agent: scraper3
+
+
+scrape4_task:
+  description: >
+    Conduct a thorough scrape of the FOURTH website from a list of given URLs using
+    provided tools and return all scraped content following these guidelines:
+
+    -Output must be a list of scraped content seperated by website.
+
+    -ALL website content should be returned,
+     regardless of length or relevance to the search query. 
+     this is a requirement (except metadata). A different agent
+     will interpret the output anyway
+
+    - All Metadata should be ignored
+
+    - Output cannot be shortened in any way,
+      all content should be returned as found in the website
+
+    - avoid any use of asterisks (*) in the output, this is of utmost priority
+
+    -If a website is inaccessible, completely ignore it and return 
+    "(WEBSITE URL) was not accessible"
+
+    -in the final answer, display all content that was scraped from the first website.
+    absolutley NO content can be left out. This is a requirement
+
+    -At the end of the final output, state the URL visited
+    and wether or not scraping was successful
+
+  expected_output: >
+    All scraped content from the second website following the 
+    pre defined guidelines
+  agent: scraper4
+
+
+scrape5_task:
+  description: >
+    Conduct a thorough scrape of the FIFTH website from a list of given URLs using
+    provided tools and return all scraped content following these guidelines:
+
+    -Output must be a list of scraped content seperated by website.
+
+    -ALL website content should be returned,
+     regardless of length or relevance to the search query. 
+     this is a requirement (except metadata). A different agent
+     will interpret the output anyway
+
+    - All Metadata should be ignored
+
+    - Output cannot be shortened in any way,
+      all content should be returned as found in the website
+
+    - avoid any use of asterisks (*) in the output, this is of utmost priority
+
+    -If a website is inaccessible, completely ignore it and return 
+    "(WEBSITE URL) was not accessible"
+
+    -in the final answer, display all content that was scraped from the first website.
+    absolutley NO content can be left out. This is a requirement
+
+    -At the end of the final output, state the URL visited
+    and wether or not scraping was successful
+
+  expected_output: >
+    All scraped content from the second website following the 
+    pre defined guidelines
+  agent: scraper5
 
 retriever_task:
   description: >
@@ -50,4 +184,18 @@ retriever_task:
 
 mentor_task: 
   description: >
+    Analyse {source1},{source2},{source3} ,{source4} and {source5}.
+    Compare them, noting parallels and differences in order to
+    formulate a comprehensive, well-formatted and easy to understand
+    tutorial based on {query}. If any data was quoted directly, the website 
+    that it came from must be referenced. At the end, the URLS of all
+    websites where the data originated from must be referenced.
+    
+
+  expected_output: >
+   A well-written, fluid and comprehensive tutorial on {query} 
+   using the input data as source material. the tutorial should be named
+   "{query} - Tutorial". Any quoted material from the provided website scraped content
+   should be referenced.
+   The URLS of ALL websites where each scraped content was sourced from should be listed at the end
    

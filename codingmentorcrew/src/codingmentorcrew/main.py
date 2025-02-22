@@ -8,8 +8,6 @@ from codingmentorcrew.crew import crawlTool
 from codingmentorcrew.crew import file_writer
 import os
 
-
-
 enc = tiktoken.encoding_for_model("gpt-4o")
 MAX_TOKENS = 8192
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
@@ -23,11 +21,15 @@ def run():
     """
     Run the crew.
     """
-    chud = str(crawlTool.run(search_query= str(input("Enter search query: "))))
+
+    query = str(input("Enter search query: "))
+    websites = str(crawlTool.run(search_query= query))
     inputs = {
-        'topic': chud,
-        'current_year': str(datetime.now().year),
+        'topic': websites,
+        'query':query,
+        'current_year': str(datetime.now().year)
     }
+    
     try:
         result = Codingmentorcrew().crew().kickoff(inputs = inputs)
         #print(str(Codingmentorcrew().crew().kickoff()))
