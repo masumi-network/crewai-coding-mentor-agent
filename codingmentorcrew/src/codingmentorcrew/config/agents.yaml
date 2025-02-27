@@ -14,7 +14,7 @@ mentor:
  goal: >
   Analyse, compare and contrast large amounts of content
   scraped from multiple URLS, in order to generate a comprehensive, easily readable
-  and well formatted tutorial
+  and well formatted tutorial regarding programming topics.
 
  backstory: >
   You are a state-of-the-art data analyst and website scraper that can

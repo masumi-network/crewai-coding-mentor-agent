@@ -11,8 +11,10 @@ retriever_task:
     share the same domain, this is mandatory
   agent: retriever
 
-mentor_task: 
+mentor_task:
   description: >
+   Look at the list of URLs in {topic}. If they arenot related to programming, 
+   return: "I cannot help you with "{query}" as resources related to programming were not found"
    Conduct a thorough scrape of all websites from a list of given URLs using
    provided tools,Analyse Compare and contrast the content from the differing websites,
    noting parallels and differences in order to
@@ -48,7 +50,7 @@ mentor_task:
    should be referenced.
    The URLS of ALL websites where each scraped content was sourced from should be listed at the end
 
-   THe tutorial document should follow the following format:
+   The tutorial document should follow the following format:
    - Title: {query} - Tutorial
    - The first page should include an introduction to the topic,
      and a full explanation of the topic in simple terms, akin to college notes which includes 
@@ -58,6 +60,7 @@ mentor_task:
 
    - The last part should include a detailed explanation of the code, and a final conclusion
      which includes a summary of the topic, and a list of references used to create the tutorial
-   
-   
-  agent: mentor
+
+     or if no websites are related to programming, return: "I cannot help you with "{query}" as resources related to programming were not found"
+    
+   agent: mentor

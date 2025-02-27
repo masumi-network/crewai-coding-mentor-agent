@@ -19,6 +19,7 @@ app = FastAPI()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 
+
 #Temporary in-memory job store (WILL BE REPLACED WITH DATABASE)
 jobs = {}
 
@@ -213,3 +214,7 @@ def run():
 
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
+
+
+
+        
