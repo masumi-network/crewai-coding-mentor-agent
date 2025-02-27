@@ -2,7 +2,7 @@
 import sys
 import warnings
 from datetime import datetime
-from codingmentorcrew.crew import Codingmentorcrew, crawlTool, file_writer
+from crew import Codingmentorcrew, crawlTool
 import tiktoken
 import os
 
@@ -16,7 +16,7 @@ from datetime import datetime, timezone
 from typing import List, Optional
 load_dotenv()
 app = FastAPI()
-
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 #Temporary in-memory job store (WILL BE REPLACED WITH DATABASE)
 jobs = {}
 
@@ -28,7 +28,7 @@ class KeyValuePair(BaseModel):
 
 class StartJobRequest(BaseModel):
     # Per MIP-003, input_data should be defined under input_schema endpoint
-    text: str
+    query: str
 
 class ProvideInputRequest(BaseModel):
     job_id: str
@@ -53,14 +53,14 @@ async def start_job(request_body: StartJobRequest):
         "status": "awaiting payment",  # Could also be 'awaiting payment', 'running', etc.
         "payment_id": payment_id,
         "created_at": datetime.now(timezone.utc).isoformat(),
-        "input_data": request_body.text,
+        "input_data": request_body.query,
         "result": None
     }
 
     # Here you invoke your crew
     crew = Codingmentorcrew()
-    query = str(input("Enter search query: "))
-    websites = str(crawlTool.run(search_query= query))
+    query = request_body.query
+    websites = str(crawlTool.run(search_query=query))
     inputs = {
         'topic': websites,
         'query':query,
@@ -152,7 +152,7 @@ async def input_schema():
     # Example response defining the accepted key-value pairs
     schema_example = {
         "input_data": [
-            {"key": "text", "value": "string"}
+            {"key": "query", "value": "string"}
         ]
     }
     return schema_example

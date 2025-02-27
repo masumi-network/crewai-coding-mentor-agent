@@ -1,0 +1,129 @@
+For loops in C++ - Tutorial
+
+The "for loop" in C++ is a fundamental control structure that allows for the execution of a block of code repeatedly for a specified number of times. This loop is particularly useful when the number of iterations is known beforehand. Below, we will explore the syntax, how a for loop works, and various examples to help understand its usage.
+
+### Syntax of For Loop
+
+The basic syntax of a for loop in C++ is:
+
+```cpp
+for (initialization; test condition; update) {
+    // body of the loop
+}
+```
+
+- **Initialization**: This step allows you to declare and initialize any loop control variables. It is executed once at the start of the loop.
+
+- **Test Condition**: The loop continues as long as this condition is true. If the condition becomes false, the loop ends.
+
+- **Update**: This is executed after each iteration of the loop. It usually involves updating the loop control variable.
+
+### How For Loop Works
+
+1. **Initialization**: The loop variable is initialized. This step is executed only once.
+2. **Condition**: The condition is evaluated. If it is true, the loop's body is executed. If it is false, the loop terminates.
+3. **Body**: The statements inside the loop body are executed.
+4. **Update**: The loop variable is updated.
+5. **Repeat**: Steps 2-4 are repeated until the condition is false.
+
+### Example 1: Printing Numbers from 0 to 4
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i < 5; i++) {
+        cout << i << "\n";
+    }
+    return 0;
+}
+```
+**Explanation**: This loop prints numbers from 0 to 4. The variable `i` is initialized to 0, the loop continues as long as `i` is less than 5, and `i` is incremented by 1 after every iteration. [Source: W3Schools](https://www.w3schools.com/cpp/cpp_for_loop.asp)
+
+### Example 2: Display a Text Multiple Times
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 1; i <= 5; ++i) {
+        cout << "Hello World! " << endl;
+    }
+    return 0;
+}
+```
+**Explanation**: This loop prints "Hello World!" five times. The loop variable `i` increases from 1 to 5, inclusive. [Source: Programiz](https://www.programiz.com/cpp-programming/for-loop)
+
+### Example 3: Printing Even Numbers Between 0 and 10
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int i = 0; i <= 10; i = i + 2) {
+        cout << i << "\n";
+    }
+    return 0;
+}
+```
+**Explanation**: This loop prints even numbers between 0 and 10 by incrementing `i` by 2 in each iteration. [Source: W3Schools](https://www.w3schools.com/cpp/cpp_for_loop.asp)
+
+### Example 4: Using Multiple Loop Variables
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (int m = 1, n = 1; m <= 3; m++, n += 2) {
+        cout << "iteration " << m << endl;
+        cout << "m is: " << m << endl;
+        cout << "n is: " << n << endl;
+    }
+    return 0;
+}
+```
+**Explanation**: This loop demonstrates the use of multiple loop variables (`m` and `n`). Both are updated in each iteration. [Source: GeeksforGeeks](https://www.geeksforgeeks.org/cpp-for-loop/)
+
+### Range-Based For Loop
+Introduced in C++11, the range-based for loop allows iterating over a collection like arrays and vectors.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num_array[] = {1, 2, 3, 4, 5};
+    for (int n : num_array) {
+        cout << n << " ";
+    }
+    return 0;
+}
+```
+**Explanation**: This loop iterates over each element in `num_array` and prints it. [Source: Programiz](https://www.programiz.com/cpp-programming/for-loop)
+
+### Infinite For Loop
+A for loop can be made to run indefinitely by omitting all three parts: initialization, condition, and update.
+
+```cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    for (;;) {
+        cout << "Infinite Loop" << endl;
+    }
+    return 0;
+}
+```
+**Explanation**: This loop will run indefinitely because there is no condition to terminate it. [Source: GeeksforGeeks](https://www.geeksforgeeks.org/cpp-for-loop/)
+
+### Conclusion
+The for loop is a powerful tool in C++ programming, allowing developers to execute blocks of code multiple times efficiently. Understanding the syntax and flow of the for loop is essential for writing effective and efficient C++ programs.
+
+### References:
+- [W3Schools C++ For Loop](https://www.w3schools.com/cpp/cpp_for_loop.asp)
+- [GeeksforGeeks C++ For Loop](https://www.geeksforgeeks.org/cpp-for-loop/)
+- [Programiz C++ For Loop](https://www.programiz.com/cpp-programming/for-loop)
+
+Note: The YouTube URL was inaccessible for scraping.
+```
