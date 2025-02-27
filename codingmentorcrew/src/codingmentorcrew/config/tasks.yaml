@@ -47,5 +47,17 @@ mentor_task:
    "{query} - Tutorial". Any quoted material from the provided website scraped content
    should be referenced.
    The URLS of ALL websites where each scraped content was sourced from should be listed at the end
+
+   THe tutorial document should follow the following format:
+   - Title: {query} - Tutorial
+   - The first page should include an introduction to the topic,
+     and a full explanation of the topic in simple terms, akin to college notes which includes 
+     advantages, disadvantages, use cases and comparisons to similar things.
+
+   - The second page should include the code. The code should be formatted in a way that is easy to understand.
+
+   - The last part should include a detailed explanation of the code, and a final conclusion
+     which includes a summary of the topic, and a list of references used to create the tutorial
+   
    
   agent: mentor

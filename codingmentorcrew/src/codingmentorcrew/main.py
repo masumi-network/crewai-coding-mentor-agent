@@ -17,10 +17,10 @@ from typing import List, Optional
 load_dotenv()
 app = FastAPI()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+
 #Temporary in-memory job store (WILL BE REPLACED WITH DATABASE)
 jobs = {}
-
-
 
 class KeyValuePair(BaseModel):
     key: str
