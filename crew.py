@@ -6,8 +6,6 @@ from langchain_openai import ChatOpenAI
 import os
 
 load_dotenv()
-
-
 Model = 'gpt-4o'
 api_key = os.getenv('OPENAI_API_KEY')
 llm = ChatOpenAI(model = Model,api_key=api_key)

@@ -13,12 +13,13 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from datetime import datetime, timezone
+from langchain_openai import ChatOpenAI
 from typing import List, Optional
 load_dotenv()
 app = FastAPI()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-
+llm = ChatOpenAI(model="gpt-4o", api_key='OPENAI_API_KEY')
 
 #Temporary in-memory job store (WILL BE REPLACED WITH DATABASE)
 jobs = {}
