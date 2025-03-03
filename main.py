@@ -62,14 +62,12 @@ async def start_job(request_body: StartJobRequest):
     websites = str(crawlTool.run(search_query=query))
     inputs = {
         'topic': websites,
-        'query':query,
+        'query': query,
         'current_year': str(datetime.now().year)
     }
     try:
-        result = Codingmentorcrew().crew().kickoff(inputs = inputs)
-
+        result = Codingmentorcrew().crew().kickoff(inputs=inputs)
         print(str(result))
-
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
@@ -164,30 +162,15 @@ def main():
         print("Error: OPENAI_API_KEY is missing. Please check your .env file.")
         return
 
-    crew = Codingmentorcrew()
-    # Get user input directly instead of using input_schema
-    query = input("Enter search query: ")
-    websites = str(crawlTool.run(search_query=query))
-    inputs = {
-        'topic': websites,
-        'query': query,
-        'current_year': str(datetime.now().year)
-    }
-    try:
-        result = Codingmentorcrew().crew().kickoff(inputs=inputs)
-        print(str(result))
-    except Exception as e:
-        raise Exception(f"An error occurred while running the crew: {e}")
-
-if __name__ == "__main__":
-    import sys
-
-    # If 'api' argument is passed, start the FastAPI server
+    # Remove interactive input since this will be running as an API server
     if len(sys.argv) > 1 and sys.argv[1] == "api":
         print("Starting FastAPI server...")
         uvicorn.run(app, host="0.0.0.0", port=8000)
     else:
-        main()
+        print("Please run with 'api' argument to start the server")
+
+if __name__ == "__main__":
+    main()
 
 
 
