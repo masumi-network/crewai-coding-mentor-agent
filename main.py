@@ -13,6 +13,7 @@ from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from datetime import datetime, timezone
 from typing import List, Optional
+
 load_dotenv()
 app = FastAPI()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -164,18 +165,17 @@ def main():
         return
 
     crew = Codingmentorcrew()
-    query = input_schema()
-    websites = str(crawlTool.run(search_query= query))
+    # Get user input directly instead of using input_schema
+    query = input("Enter search query: ")
+    websites = str(crawlTool.run(search_query=query))
     inputs = {
         'topic': websites,
-        'query':query,
+        'query': query,
         'current_year': str(datetime.now().year)
     }
     try:
-        result = Codingmentorcrew().crew().kickoff(inputs = inputs)
-
+        result = Codingmentorcrew().crew().kickoff(inputs=inputs)
         print(str(result))
-
     except Exception as e:
         raise Exception(f"An error occurred while running the crew: {e}")
 
