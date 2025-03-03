@@ -5,7 +5,6 @@ from datetime import datetime
 from crew import Codingmentorcrew, crawlTool
 import tiktoken
 import os
-
 #Exposing crew to API
 import uvicorn
 import uuid
@@ -13,13 +12,10 @@ from dotenv import load_dotenv
 from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from datetime import datetime, timezone
-from langchain_openai import ChatOpenAI
 from typing import List, Optional
 load_dotenv()
 app = FastAPI()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-
-llm = ChatOpenAI(model="gpt-4o", api_key='OPENAI_API_KEY')
 
 #Temporary in-memory job store (WILL BE REPLACED WITH DATABASE)
 jobs = {}
@@ -152,12 +148,12 @@ async def input_schema():
     Fulfills MIP-003 /input_schema endpoint.
     """
     # Example response defining the accepted key-value pairs
-    schema_example = {
+    query_input = {
         "input_data": [
             {"key": "query", "value": "string"}
         ]
     }
-    return schema_example
+    return query_input
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Main logic if called as a script
@@ -168,7 +164,7 @@ def main():
         return
 
     crew = Codingmentorcrew()
-    query = str(input("Enter search query: "))
+    query = input_schema()
     websites = str(crawlTool.run(search_query= query))
     inputs = {
         'topic': websites,

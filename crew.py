@@ -1,7 +1,7 @@
+from dotenv import load_dotenv
 from crewai import Crew, Process, Agent, Task
 from crewai.project import CrewBase, agent, crew, task
 from crewai_tools import ScrapeWebsiteTool,SerperDevTool,FileWriterTool
-from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 import os
 
