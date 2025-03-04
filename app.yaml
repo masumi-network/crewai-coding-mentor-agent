@@ -11,3 +11,17 @@ services:
       - key: OPENAI_API_KEY
         scope: RUN_TIME
         value: ${OPENAI_API_KEY}
+    instance_size_slug: basic-xxs  # Smallest instance size
+    instance_count: 1
+    health_check:
+      http_path: /availability
+      period_seconds: 10
+      timeout_seconds: 5
+      failure_threshold: 3
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 512Mi
+      limits:
+        cpu: 1000m
+        memory: 1Gi
