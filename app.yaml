@@ -6,11 +6,14 @@ services:
       branch: main
       deploy_on_push: true
     build_command: pip install -r requirements.txt
-    run_command: python main.py api
+    run_command: uvicorn main:app --host 0.0.0.0 --port $PORT
     envs:
       - key: OPENAI_API_KEY
         scope: RUN_TIME
         value: ${OPENAI_API_KEY}
+      - key: PORT
+        scope: RUN_TIME
+        value: "8080"
     instance_size_slug: basic-xxs  # Smallest instance size
     instance_count: 1
     health_check:
