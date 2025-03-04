@@ -1,1 +1,13 @@
-pip install -r requirements.txt
+name: coding-mentor-crew
+services:
+  - name: web
+    environment_slug: python
+    github:
+      branch: main
+      deploy_on_push: true
+    build_command: pip install -r requirements.txt
+    run_command: python main.py api
+    envs:
+      - key: OPENAI_API_KEY
+        scope: RUN_TIME
+        value: ${OPENAI_API_KEY}
