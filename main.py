@@ -68,7 +68,7 @@ class StartJobRequest(BaseModel):
 
 class ProvideInputRequest(BaseModel):
     job_id: str
-
+    
 # ─────────────────────────────────────────────────────────────────────────────
 # CrewAI Task Execution
 # ─────────────────────────────────────────────────────────────────────────────
@@ -88,40 +88,43 @@ async def execute_crew_task(input_query: str) -> str:
 @app.post("/start_job")
 async def start_job(data: StartJobRequest):
     """ Initiates a job and creates a payment request """
-    try:
-        job_id = str(uuid.uuid4())
-        agent_identifier = os.getenv("AGENT_IDENTIFIER")
+
+    print(data.input_query)
+    print(data.identifier_from_purchaser)
+    #try:
+    job_id = str(uuid.uuid4())
+    agent_identifier = os.getenv("AGENT_IDENTIFIER")
         
         # Log the input text (truncate if too long)
-        input_text = data.input_query["query"]
-        truncated_input = input_text[:100] + "..." if len(input_text) > 100 else input_text
-        logger.info(f"Received job request with input: '{truncated_input}'")
-        logger.info(f"Starting job {job_id} with agent {agent_identifier}")
+    input_text = data.input_query["query"]
+    truncated_input = input_text[:100] + "..." if len(input_text) > 100 else input_text
+    logger.info(f"Received job request with input: '{truncated_input}'")
+    logger.info(f"Starting job {job_id} with agent {agent_identifier}")
 
         # Define payment amounts
-        payment_amount = os.getenv("PAYMENT_AMOUNT", "10000000")  # Default 10 ADA
-        payment_unit = os.getenv("PAYMENT_UNIT", "lovelace") # Default lovelace
+    payment_amount = os.getenv("PAYMENT_AMOUNT", "10000000")  # Default 10 ADA
+    payment_unit = os.getenv("PAYMENT_UNIT", "lovelace") # Default lovelace
 
-        amounts = [Amount(amount=payment_amount, unit=payment_unit)]
-        logger.info(f"Using payment amount: {payment_amount} {payment_unit}")
+    amounts = [Amount(amount=payment_amount, unit=payment_unit)]
+    logger.info(f"Using payment amount: {payment_amount} {payment_unit}")
         
         # Create a payment request using Masumi
-        payment = Payment(
-            agent_identifier=agent_identifier,
-            #amounts=amounts,
-            config=config,
-            identifier_from_purchaser=data.identifier_from_purchaser,
-            input_query=data.input_query
-        )
+    payment = Payment(
+        agent_identifier=agent_identifier,
+        amounts=amounts,
+        config=config,
+        identifier_from_purchaser=data.identifier_from_purchaser,
+        input_data=data.input_query
+    )
         
-        logger.info("Creating payment request...")
-        payment_request = await payment.create_payment_request()
-        payment_id = payment_request["data"]["blockchainIdentifier"]
-        payment.payment_ids.add(payment_id)
-        logger.info(f"Created payment request with ID: {payment_id}")
+    logger.info("Creating payment request...")
+    payment_request = await payment.create_payment_request()
+    payment_id = payment_request["data"]["blockchainIdentifier"]
+    payment.payment_ids.add(payment_id)
+    logger.info(f"Created payment request with ID: {payment_id}")
 
         # Store job info (Awaiting payment)
-        jobs[job_id] = {
+    jobs[job_id] = {
             "status": "awaiting_payment",
             "payment_status": "pending",
             "payment_id": payment_id,
@@ -130,15 +133,15 @@ async def start_job(data: StartJobRequest):
             "identifier_from_purchaser": data.identifier_from_purchaser
         }
         
-        async def payment_callback(payment_id: str):
-            await handle_payment_status(job_id, payment_id)
+    async def payment_callback(payment_id: str):
+        await handle_payment_status(job_id, payment_id)
 
         # Start monitoring the payment status
-        payment_instances[job_id] = payment
-        logger.info(f"Starting payment status monitoring for job {job_id}")
-        await payment.start_status_monitoring(payment_callback)
+    payment_instances[job_id] = payment
+    logger.info(f"Starting payment status monitoring for job {job_id}")
+    await payment.start_status_monitoring(payment_callback)
 
-        return {
+    return {
             "status": "success",
             "job_id": job_id,
             "blockchainIdentifier": payment_request["data"]["blockchainIdentifier"],
@@ -151,7 +154,7 @@ async def start_job(data: StartJobRequest):
             "amounts": amounts,
             "input_hash": payment.input_hash
         }
-    
+    """
     except KeyError as e:
         logger.error(f"Missing required field in request: {str(e)}", exc_info=True)
         raise HTTPException(
@@ -163,7 +166,8 @@ async def start_job(data: StartJobRequest):
         raise HTTPException(
             status_code=400,
             detail="Input_data or identifier_from_purchaser is missing, invalid, or does not adhere to the schema."
-        )
+            
+        )"""
 # ─────────────────────────────────────────────────────────────────────────────
 # 2) Process Payment and Execute AI Task
 # ─────────────────────────────────────────────────────────────────────────────
