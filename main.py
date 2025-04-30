@@ -113,7 +113,7 @@ async def start_job(data: StartJobRequest):
             #amounts=amounts,
             config=config,
             identifier_from_purchaser=data.identifier_from_purchaser,
-            input_data=data.input_query
+            input_data=data.input_query,
             network = NETWORK
         )
             
