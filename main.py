@@ -23,6 +23,7 @@ load_dotenv(override=True)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 PAYMENT_SERVICE_URL = os.getenv("PAYMENT_SERVICE_URL")
 PAYMENT_API_KEY = os.getenv("PAYMENT_API_KEY")
+NETWORK = os.getenv("NETWORK")
 
 logger.info("Starting application with configuration:")
 logger.info(f"PAYMENT_SERVICE_URL: {PAYMENT_SERVICE_URL}")
@@ -89,72 +90,70 @@ async def execute_crew_task(input_query: str) -> str:
 async def start_job(data: StartJobRequest):
     """ Initiates a job and creates a payment request """
 
-    print(data.input_query)
-    print(data.identifier_from_purchaser)
-    #try:
-    job_id = str(uuid.uuid4())
-    agent_identifier = os.getenv("AGENT_IDENTIFIER")
-        
-        # Log the input text (truncate if too long)
-    input_text = data.input_query["query"]
-    truncated_input = input_text[:100] + "..." if len(input_text) > 100 else input_text
-    logger.info(f"Received job request with input: '{truncated_input}'")
-    logger.info(f"Starting job {job_id} with agent {agent_identifier}")
+    try:
+        job_id = str(uuid.uuid4())
+        agent_identifier = os.getenv("AGENT_IDENTIFIER")
+            
+            # Log the input text (truncate if too long)
+        input_text = data.input_query["query"]
+        truncated_input = input_text[:100] + "..." if len(input_text) > 100 else input_text
+        logger.info(f"Received job request with input: '{truncated_input}'")
+        logger.info(f"Starting job {job_id} with agent {agent_identifier}")
 
-        # Define payment amounts
-    payment_amount = os.getenv("PAYMENT_AMOUNT", "10000000")  # Default 10 ADA
-    payment_unit = os.getenv("PAYMENT_UNIT", "lovelace") # Default lovelace
+            # Define payment amounts
+        payment_amount = os.getenv("PAYMENT_AMOUNT", "10000000")  # Default 10 ADA
+        payment_unit = os.getenv("PAYMENT_UNIT", "lovelace") # Default lovelace
 
-    amounts = [Amount(amount=payment_amount, unit=payment_unit)]
-    logger.info(f"Using payment amount: {payment_amount} {payment_unit}")
-        
-        # Create a payment request using Masumi
-    payment = Payment(
-        agent_identifier=agent_identifier,
-        amounts=amounts,
-        config=config,
-        identifier_from_purchaser=data.identifier_from_purchaser,
-        input_data=data.input_query
-    )
-        
-    logger.info("Creating payment request...")
-    payment_request = await payment.create_payment_request()
-    payment_id = payment_request["data"]["blockchainIdentifier"]
-    payment.payment_ids.add(payment_id)
-    logger.info(f"Created payment request with ID: {payment_id}")
+        amounts = [Amount(amount=payment_amount, unit=payment_unit)]
+        logger.info(f"Using payment amount: {payment_amount} {payment_unit}")
+            
+            # Create a payment request using Masumi
+        payment = Payment(
+            agent_identifier=agent_identifier,
+            #amounts=amounts,
+            config=config,
+            identifier_from_purchaser=data.identifier_from_purchaser,
+            input_data=data.input_query
+            network = NETWORK
+        )
+            
+        logger.info("Creating payment request...")
+        payment_request = await payment.create_payment_request()
+        payment_id = payment_request["data"]["blockchainIdentifier"]
+        payment.payment_ids.add(payment_id)
+        logger.info(f"Created payment request with ID: {payment_id}")
 
-        # Store job info (Awaiting payment)
-    jobs[job_id] = {
-            "status": "awaiting_payment",
-            "payment_status": "pending",
-            "payment_id": payment_id,
-            "input_query": data.input_query,
-            "result": None,
-            "identifier_from_purchaser": data.identifier_from_purchaser
-        }
-        
-    async def payment_callback(payment_id: str):
-        await handle_payment_status(job_id, payment_id)
+            # Store job info (Awaiting payment)
+        jobs[job_id] = {
+                "status": "awaiting_payment",
+                "payment_status": "pending",
+                "payment_id": payment_id,
+                "input_query": data.input_query,
+                "result": None,
+                "identifier_from_purchaser": data.identifier_from_purchaser
+            }
+            
+        async def payment_callback(payment_id: str):
+            await handle_payment_status(job_id, payment_id)
 
-        # Start monitoring the payment status
-    payment_instances[job_id] = payment
-    logger.info(f"Starting payment status monitoring for job {job_id}")
-    await payment.start_status_monitoring(payment_callback)
+            # Start monitoring the payment status
+        payment_instances[job_id] = payment
+        logger.info(f"Starting payment status monitoring for job {job_id}")
+        await payment.start_status_monitoring(payment_callback)
 
-    return {
-            "status": "success",
-            "job_id": job_id,
-            "blockchainIdentifier": payment_request["data"]["blockchainIdentifier"],
-            "submitResultTime": payment_request["data"]["submitResultTime"],
-            "unlockTime": payment_request["data"]["unlockTime"],
-            "externalDisputeUnlockTime": payment_request["data"]["externalDisputeUnlockTime"],
-            "agentIdentifier": agent_identifier,
-            "sellerVkey": os.getenv("SELLER_VKEY"),
-            "identifierFromPurchaser": data.identifier_from_purchaser,
-            "amounts": amounts,
-            "input_hash": payment.input_hash
-        }
-    """
+        return {
+                "status": "success",
+                "job_id": job_id,
+                "blockchainIdentifier": payment_request["data"]["blockchainIdentifier"],
+                "submitResultTime": payment_request["data"]["submitResultTime"],
+                "unlockTime": payment_request["data"]["unlockTime"],
+                "externalDisputeUnlockTime": payment_request["data"]["externalDisputeUnlockTime"],
+                "agentIdentifier": agent_identifier,
+                "sellerVkey": os.getenv("SELLER_VKEY"),
+                "identifierFromPurchaser": data.identifier_from_purchaser,
+                "amounts": amounts,
+                "input_hash": payment.input_hash
+            }
     except KeyError as e:
         logger.error(f"Missing required field in request: {str(e)}", exc_info=True)
         raise HTTPException(
@@ -167,7 +166,7 @@ async def start_job(data: StartJobRequest):
             status_code=400,
             detail="Input_data or identifier_from_purchaser is missing, invalid, or does not adhere to the schema."
             
-        )"""
+        )
 # ─────────────────────────────────────────────────────────────────────────────
 # 2) Process Payment and Execute AI Task
 # ─────────────────────────────────────────────────────────────────────────────
