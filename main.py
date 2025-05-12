@@ -55,13 +55,13 @@ config = Config(
 
 class StartJobRequest(BaseModel):
     identifier_from_purchaser: str
-    input_query: dict[str, str]
+    input_data: dict[str, str]
 
     class Config:
         json_schema_extra = {
             "example": {
                 "identifier_from_purchaser": "example_purchaser_123",
-                "input_query": {
+                "input_data": {
                     "query": "Tutorial for merge sort in Python"
                 }
             }
@@ -73,12 +73,12 @@ class ProvideInputRequest(BaseModel):
 # ─────────────────────────────────────────────────────────────────────────────
 # CrewAI Task Execution
 # ─────────────────────────────────────────────────────────────────────────────
-async def execute_crew_task(input_query: str) -> str:
+async def execute_crew_task(input_data: str) -> str:
     """ Execute a CrewAI task with Research and Writing Agents """
-    logger.info(f"Starting CrewAI task with input: {input_query}")
+    logger.info(f"Starting CrewAI task with input: {input_data}")
     crew = ResearchCrew(logger=logger)
-    links = search_websites(input_query)
-    result = crew.crew.kickoff(inputs={"query": input_query, "urls": links})
+    links = search_websites(input_data)
+    result = crew.crew.kickoff(inputs={"query": input_data, "urls": links})
     logger.info("CrewAI task completed successfully")
     return result
 
@@ -95,7 +95,7 @@ async def start_job(data: StartJobRequest):
         agent_identifier = os.getenv("AGENT_IDENTIFIER")
             
             # Log the input text (truncate if too long)
-        input_text = data.input_query["query"]
+        input_text = data.input_data["query"]
         truncated_input = input_text[:100] + "..." if len(input_text) > 100 else input_text
         logger.info(f"Received job request with input: '{truncated_input}'")
         logger.info(f"Starting job {job_id} with agent {agent_identifier}")
@@ -113,7 +113,7 @@ async def start_job(data: StartJobRequest):
             #amounts=amounts,
             config=config,
             identifier_from_purchaser=data.identifier_from_purchaser,
-            input_data=data.input_query,
+            input_data=data.input_data,
             network = NETWORK
         )
             
@@ -128,7 +128,7 @@ async def start_job(data: StartJobRequest):
                 "status": "awaiting_payment",
                 "payment_status": "pending",
                 "payment_id": payment_id,
-                "input_query": data.input_query,
+                "input_data": data.input_data,
                 "result": None,
                 "identifier_from_purchaser": data.identifier_from_purchaser
             }
